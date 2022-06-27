@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class home extends AppCompatActivity {
 
-    EditText userid,email;
+    EditText userid,email,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -79,7 +79,7 @@ public class login extends AppCompatActivity {
                                     String mail=user.getEmail();
 
 
-                                    Intent intent =new Intent(getApplicationContext(),nav.class);
+                                    Intent intent =new Intent(getApplicationContext(),home.class);
 
                                     intent.putExtra("uid",UID);
                                     intent.putExtra("email",mail);

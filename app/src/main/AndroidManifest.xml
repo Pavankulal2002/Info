@@ -13,11 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Info">
         <activity
-            android:name=".nav"
-            android:exported="false"
-            android:label="@string/title_activity_nav"
-            android:theme="@style/Theme.Info.NoActionBar" />
-        <activity
             android:name=".home"
             android:exported="false" />
         <activity
