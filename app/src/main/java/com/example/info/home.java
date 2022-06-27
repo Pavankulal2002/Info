@@ -1,14 +1,27 @@
 package com.example.info;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class home extends AppCompatActivity {
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+    private FirebaseAuth mAuth;
 
-    EditText userid,email,name;
+    EditText userid,email;
+    TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,20 +30,45 @@ public class home extends AppCompatActivity {
 
         userid =(EditText) findViewById(R.id.uid);
         email=(EditText) findViewById(R.id.emailadd);
+        name=(TextView) findViewById(R.id.name);
 
-        showuserdetails();
-
-
-    }
-
-    private void showuserdetails() {
+        //Getting values from login page
 
         Intent intent=getIntent();
-        String UID= intent.getStringExtra("uid");
-        String Mail= intent.getStringExtra("email");
+        String id= intent.getStringExtra("uid");
 
-        userid.setText(UID);
-        email.setText(Mail);
+        //retrieving data from database using userId
+
+        rootNode =FirebaseDatabase.getInstance();
+        rootNode.getReference().child("Users").child(id)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String nameDB=snapshot.child("name").getValue(String.class);
+
+
+                        Intent intent=getIntent();
+                        String UID= intent.getStringExtra("uid");
+                        String Mail= intent.getStringExtra("email");
+
+                        userid.setText(UID);
+                        email.setText(Mail);
+                        name.setText(nameDB);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
+
 
     }
+
+
 }
