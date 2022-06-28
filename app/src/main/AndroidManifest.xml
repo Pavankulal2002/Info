@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Info">
         <activity
+            android:name=".profile"
+            android:exported="false" />
+        <activity
+            android:name=".menu"
+            android:exported="false" />
+        <activity
             android:name=".home"
             android:exported="false" />
         <activity

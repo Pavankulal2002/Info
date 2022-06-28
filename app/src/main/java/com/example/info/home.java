@@ -1,12 +1,12 @@
 package com.example.info;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +31,7 @@ public class home extends AppCompatActivity {
         userid =(EditText) findViewById(R.id.uid);
         email=(EditText) findViewById(R.id.emailadd);
         name=(TextView) findViewById(R.id.name);
+
 
         //Getting values from login page
 
